@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="India COVID-19  interactive dashboards and notifications. ">
+    <meta name="author" content="NEN10">
+    <title>NEN10</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143344676-1"></script>
+    <script src="js/gtag.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.jpg" type="image/jpg">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="css/argon.css?v=1.2.0" type="text/css">
+
+</head>
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Search form -->
+                <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                    <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-search"></i>
+																	</span>
+                            </div>
+                            <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </form>
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center  ml-md-auto ">
+                    <!-- Home button-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" role="button">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item d-sm-none">
+                        <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+                            <!-- Dropdown header -->
+                            <div class="px-3 py-3">
+                                <h6 class="text-sm text-muted m-0">You have
+
+                                    <strong class="text-primary">0</strong> notifications.
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://blog.nen10.com/" role="button">
+                            <i class="fas fa-blog"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+                <div class="row">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0"></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <canvas id="statewiseLineChart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S0"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S1"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S2"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S3"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S4"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S5"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S6"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S7"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S8"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S9"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S10"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S11"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S12"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S13"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S14"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S15"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S16"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S17"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S18"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S19"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S20"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S21"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S22"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S23"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S24"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S25"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S26"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S27"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S28"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S29"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S30"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S31"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S32"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S33"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S34"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S35"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="card">
+
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart_S36"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center  text-lg-center  text-muted">
+                        &copy; 2020
+
+                        <a href="https://www.nen10.com" class="font-weight-bold ml-1" target="_blank">NEN10</a>
+                    </div>
+                    <div class="copyright text-center  text-lg-center  text-muted">
+                        <li class="nav-item fas fa-database">
+                            <a href="https://api.covid19india.org" class="nav-link" target="_blank">covid19india</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+<!-- Vendor Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
+
+<!-- Optional JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+<!-- Application Scripts -->
+<script src="js/report-page.js"></script>
+
+</body>
+</html>

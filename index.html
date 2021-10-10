@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="India COVID-19 interactive dashboards and notifications. ">
+    <meta name="author" content="Naveen Thurimerla">
+    <title>Covid19 India</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143344676-1"></script>
+    <script src="js/gtag.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.jpg" type="image/jpg">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="css/argon.css?v=1.2.0" type="text/css">
+</head>
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Search form -->
+                <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                    <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+																	<span class="input-group-text">
+																		<i class="fas fa-search"></i>
+																	</span>
+                            </div>
+                            <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main"
+                            aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </form>
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center  ml-md-auto ">
+                    <!-- Home button-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" role="button">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item d-sm-none">
+                        <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+                            <!-- Dropdown header -->
+                            <div class="px-3 py-3">
+                                <h6 class="text-sm text-muted m-0">You have
+
+                                    <strong class="text-primary">1</strong> notifications.
+
+                                </h6>
+                            </div>
+                            <!-- List group -->
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto"></div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="text-right text-muted">
+                                                    <small>1 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">2 new cases in Bihar</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                            <!-- View all -->
+                            <a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View
+                                all</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html" role="button">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://blog.nen10.com/" role="button">
+                            <i class="fas fa-blog"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Confirmed</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="covidConfirmedAll"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
+                                            <i class="fa fa-ambulance"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+																			<span class="text-success mr-2">
+																				<i class="fa fa-arrow-up"
+                                                                                   id="covidDeltaConfirmedAll"></i>
+																			</span>
+                                    <span class="text-nowrap">TODAY</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">ACTIVE</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="covidActiveAll"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                            <i class="fas fa-hospital-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+																			<span class="text-success mr-2">
+																				<i class="fa fa-arrow-up"></i>
+																			</span>
+                                    <span class="text-nowrap">TODAY</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">recovered</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="covidRecoveredAll"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                            <i class="fas fa-stethoscope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+																			<span class="text-success mr-2">
+																				<i class="fa fa-arrow-up"
+                                                                                   id="covidDeltaRecoveredAll"></i>
+																			</span>
+                                    <span class="text-nowrap">TODAY</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">deceased</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="covidDeathsAll"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                            <i class="fas fa-procedures"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+																			<span class="text-danger mr-2">
+																				<i class="fa fa-arrow-up"
+                                                                                   id="covidDeltaDeathsAll"></i>
+																			</span>
+                                    <span class="text-nowrap">TODAY</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Statewise Dashboards -->
+
+        <div class="row">
+
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Statewise Dashboard</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <canvas id="statewiseBarChart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Projects table  -->
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Statewise Overall</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive" id="d3StatewiseData"></div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Statewise Daily</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="d3StatewiseDataDaily"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-center">
+                <div class="col-lg-6">
+                    <div class="copyright text-center  text-lg-center  text-muted">
+                        &copy; 2020
+
+                        <a href="https://www.nen10.com" class="font-weight-bold ml-1" target="_blank">NEN10</a>
+                    </div>
+                    <div class="copyright text-center  text-lg-center  text-muted">
+                        <li class="nav-item fas fa-database">
+                            <a href="https://api.covid19india.org" class="nav-link" target="_blank">covid19india</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Vendor Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
+
+<!-- Optional JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
+
+<!-- Application Scripts -->
+<script src="js/coreapi.js"></script>
+<script src="js/index-page.js"></script>
+<script src="js/report-page.js"></script>
+
+
+</body>
+</html>
